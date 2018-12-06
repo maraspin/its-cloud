@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "fastify": "^1.13.1",
+    "fastify-formbody": "^2.0.3",
     "make-promises-safe": "^4.0.0",
     "pg": "^7.7.1",
     "point-of-view": "^2.0.0",

@@ -15,7 +15,7 @@ html
         select(name='rating')
           for n in [1, 2, 3, 4, 5]
             option(value=n) #{n}
-        input#rating(type='hidden', name='id' value='#{val.id}')
+        input#rating(type='hidden', name='id' value=val.id)
         button.btn.btn-primary(type='submit') Vote
 
     else

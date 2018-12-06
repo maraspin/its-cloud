@@ -23,6 +23,8 @@ fastify.register(require('point-of-view'), {
   }
 })
 
+fastify.register(require('fastify-formbody'))
+
 // DB Connection
 fastify.register(require('./pcplugins/dbconn'), {
   dsn: config.db.dsn

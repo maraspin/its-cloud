@@ -26,13 +26,20 @@ async function routes (fastify, options) {
 
 
   fastify.post('/vote', async (request, reply) => {
-  	 const upd = await db.query('UPDATE tsac18_maraspin.images SET votes=votes+1, total=total + ' + request.params.score + ' WHERE id = ' + request.params.id )
-	 const ins = await db.query('INSERT INTO tsac18_maraspin.votes (image_id, user_id, value) VALUES (' + request.params.score +',' + user.id + ',' + request.params.score +')')
-	console.log('Rating given')
+  	 console. log(request.body)
+  	 const q1 = 'UPDATE tsac18_maraspin.images SET votes=votes+1, total=total + ' + request.body.rating + ' WHERE id = ' + request.body.id
+  	 console. log(q1)
+  	 const upd = await db.query(q1)
+  	 const q2 = 'INSERT INTO tsac18_maraspin.votes (image_id, user_id, value) VALUES (' + request.body.id +',' + user.id + ',' + request.body.rating +')'
+	 console. log(q2)
+	 const ins = await db.query(q2)
+	 console.log('Rating given')
 	 reply.redirect('/');
   })
 
+
   fastify.get('/ranking', async (request, reply) => {})
+
 
 }
 
