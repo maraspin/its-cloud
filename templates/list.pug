@@ -1,0 +1,26 @@
+//- index.pug
+doctype html
+html
+  include /header.pug
+  body
+    h1 TSAC 2018 Photo Contest
+    p #{name} (#{userid}) Logged In
+  each val in res
+    if val.user_id != userid
+      img.className#IdName(src= val.url alt="Image Title" height="240")
+
+      // a(href='/vote/'+ val.id + '/5' )
+      form(method='POST' action='/vote')
+        div.form-group
+        select(name='rating')
+          for n in [1, 2, 3, 4, 5]
+            option(value=n) #{n}
+        input#rating(type='hidden', name='id' value='#{val.id}')
+        button.btn.btn-primary(type='submit') Vote
+
+    else
+      img.className#IdName(src= val.url alt="Image Title" height="240")
+      p #{val.user_id}, #{val.total}
+
+  include /footer.pug
+
